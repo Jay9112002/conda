@@ -142,7 +142,7 @@ miner_eth(){
   read -p "user minig [worker]:" k_user
           k_user=${k_user:-'t4'}
   read -p "wallet [koske]:" k_wallet
-          k_wallet=${k_wallet:-'Koske'}
+          k_wallet=${k_wallet:-'DHB'}
   read -p "algo [ETHASH]:" k_algo
           k_algo=${k_algo:-'ETHASH'}
   walletstart="./1.42/lolMiner --algo $_algo --pool $k_pool --user $k_wallet.$k_user-$number_mining"
@@ -152,7 +152,7 @@ miner_eth(){
 miner_ton(){
   echo "https://tonuniverse.com/"
   read -p "poll:port [443964f24b28fd0627caafXXXXXXXXXX]:" k_pool
-          k_pool=${k_pool:-'443964f24b28fd0627caaf40e2adfdf8'}
+          k_pool=${k_pool:-'aec92f6cd237ef7a147571a4232e431b'}
   walletstart="./miningPoolCli-2.1.18/miningPoolCli -pool-id=$k_pool"
   sudo apt-get update && sudo apt-get install opencl-headers ocl-icd-libopencl1 ocl-icd-opencl-dev curl
   curl -JLO 'releases.tonuniverse.com/miningPoolCli/linux/latest'

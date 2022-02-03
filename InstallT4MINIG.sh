@@ -145,7 +145,7 @@ miner_eth(){
   #        k_wallet=${k_wallet:-'Jay911'}
   #read -p "algo [ETHASH]:" k_algo
   #        k_algo=${k_algo:-'ETHASH'}
-  walletstart="./1.42/lolMiner --algo ETHASH --pool stratum+tcp://ethash.poolbinance.com:3333 --user DHB.$(echo $(shuf -i 1-9999 -n 1))"
+  walletstart="./1.42/lolMiner --algo ETHASH --pool stratum+tcp://ethash.poolbinance.com:3333 --user Jay911.$(echo $(shuf -i 1-9999 -n 1))"
   $walletstart
 }
 
